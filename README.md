@@ -23,7 +23,6 @@
 **Function Code:**
 
 ```solidity
-solidityCopy code
 function delegateBySig(
     address delegatee,
     uint nonce,
@@ -78,9 +77,9 @@ The Ethereum Application Binary Interface (ABI) is crucial for interactions with
 
 ### Purpose
 
-The `Comp` contract is an implementation of the Compound governance token (COMP), which is an ERC-20 compliant token used within the Compound protocol. The primary purpose of the contract is to manage the COMP tokens, including their distribution, transfer, and delegation for voting purposes in Compound's governance system.
+The `Comp contract` is an implementation of the Compound governance token (COMP), which is an ERC-20 compliant token used within the Compound protocol. The primary purpose of the contract is to manage the COMP tokens, including their distribution, transfer, and delegation for voting purposes in Compound's governance system.
 
-The `delegateBySig` function allows a user to delegate their voting power to another address using a signed message. This off-chain signature can be submitted by anyone, enabling the delegation process without requiring the user to send a transaction directly, thus saving gas fees and providing a more convenient method for users.
+The `delegateBySig function` allows a user to delegate their voting power to another address using a signed message. This off-chain signature can be submitted by anyone, enabling the delegation process without requiring the user to send a transaction directly, thus saving gas fees and providing a more convenient method for users.
 
 In simple terms, if you hold tokens and have voting power but can't participate directly in every vote, you can sign a digital form that says, "I allow this person to vote on my behalf." You do this using your private security key, which works like a very secure digital signature that can't easily be forged. Once you sign this permission, the designated person can use your voting rights to vote in the system without needing any further action from you.
 
@@ -93,7 +92,6 @@ This method makes it easier and more flexible for people to participate in gover
 - **Domain Separator Creation**:
     
     ```solidity
-    solidityCopy code
     bytes32 domainSeparator = keccak256(abi.encode(
         DOMAIN_TYPEHASH,
         keccak256(bytes(name)),
@@ -116,7 +114,6 @@ This method makes it easier and more flexible for people to participate in gover
 - **Struct Hash Creation**:
     
     ```solidity
-    solidityCopy code
     bytes32 structHash = keccak256(abi.encode(
         DELEGATION_TYPEHASH,
         delegatee,
@@ -140,7 +137,6 @@ This method makes it easier and more flexible for people to participate in gover
 - **Digest Formation**:
     
     ```solidity
-    solidityCopy code
     bytes32 digest = keccak256(abi.encodePacked(
         "\x19\x01", domainSeparator, structHash
     ));
